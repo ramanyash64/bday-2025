@@ -525,7 +525,7 @@
         <div class="cake-box" id="cakeBox" onclick="openCakeBox()">🎁 Click to Open!</div>
         <div class="cake" id="cake"></div>
         <div class="candle-box" id="candleBox" onclick="openCandleBox()">🕯️ Click to Open!</div>
-        <div class="number-candle" id="numberCandle">🕯️</div>
+
         <div class="instruction" id="instruction">Welcome to your birthday celebration! 🎉</div>
     </div>
 
@@ -642,7 +642,6 @@
             createCandles();
             
             setTimeout(() => {
-                document.getElementById('numberCandle').style.display = 'block';
                 // Auto-light all candles
                 setTimeout(lightAllCandles, 1000);
             }, 500);
@@ -685,10 +684,8 @@
                 }, index * 300);
             });
             
-            // Light the number candle last
+            // Light the candles
             setTimeout(() => {
-                const numberCandle = document.getElementById('numberCandle');
-                numberCandle.classList.add('lit');
                 showInstruction("Now blow out the candles by clicking on them! 💨");
             }, candles.length * 300 + 500);
         }
@@ -699,7 +696,7 @@
                 candle.classList.add('blown');
                 candlesBlown++;
                 
-                if (candlesBlown === totalCandles + 1) { // +1 for number candle
+                if (candlesBlown === totalCandles) { // Only regular candles
                     setTimeout(() => {
                         playBirthdaySong();
                     }, 500);
